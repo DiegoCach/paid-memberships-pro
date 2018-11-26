@@ -1830,7 +1830,6 @@
 					{
 						$order->error = __("Could not cancel old subscription.", 'paid-memberships-pro' );
 						$order->shorterror = $order->error;
-						error_log("NO PUDO CANCELAR");
 						return false;
 					}
 				}
