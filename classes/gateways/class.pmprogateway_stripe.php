@@ -1830,7 +1830,7 @@
 					{
 						$order->error = __("Could not cancel old subscription.", 'paid-memberships-pro' );
 						$order->shorterror = $order->error;
-
+						error_log("NO PUDO CANCELAR");
 						return false;
 					}
 				}
@@ -1894,6 +1894,8 @@
 						{
 							$invoice->closed = true;
 							$invoice->save();
+						}else if($invoice->closed && $invoice->subscription == $subscription->id){
+							return true;
 						}
 					}
 				}
@@ -1904,7 +1906,6 @@
 				
 				//cancel
 				$r = $subscription->cancel();
-
 				return true;
 			}
 			catch(Exception $e)
